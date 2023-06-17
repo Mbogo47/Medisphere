@@ -24,16 +24,6 @@
     height: auto;
 }
 
-.heading {
-    text-align: center;
-    padding-bottom: 2rem;
-    text-shadow: var(--text-shadow);
-    text-transform: uppercase;
-    color: var(--black);
-    font-size: 3rem;
-    letter-spacing: .2rem;
-    margin-bottom: 30px;
-}
 
 .row .content {
     flex: 1 1 45%;

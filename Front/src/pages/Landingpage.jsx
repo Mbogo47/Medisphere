@@ -1,17 +1,28 @@
-import Header from "../components/Header"
-import Servcont from "../components/Servcont"
-import About from "./About"
+import { useRef } from "react";
+import Header from "../components/Header";
+import Revcont from "../components/Revcont";
+import Servcont from "../components/Servcont";
+import About from "./About";
+import Contact from "./Contact";
 
 const Landingpage = () => {
+    const aboutRef = useRef(null);
+
+    const scrollToAbout = () => {
+        aboutRef.current.scrollIntoView({ behavior: "smooth" });
+    };
+
     return (
         <div>
-            <Header />
+            <Header scrollToAbout={scrollToAbout} />
             <Servcont />
-            <About />
-
-
+            <div ref={aboutRef}>
+                <About />
+            </div>
+            <Revcont />
+            <Contact />
         </div>
-    )
-}
+    );
+};
 
-export default Landingpage
+export default Landingpage;

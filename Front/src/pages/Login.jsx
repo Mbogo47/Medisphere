@@ -28,7 +28,7 @@ const Login = () => {
                     <input type="password" name="password" placeholder="Password" {...register("password")} />
                     {errors.password && <p className="error-message">{errors.password.message}</p>}
                     <button type="submit">Login</button>
-                    <p className="signin">Don't have an account? <Link to={'/'} className="log">Sign Up</Link></p>
+                    <p className="signin">Don't have an account? <Link to={'/signup'} className="log">Sign Up</Link></p>
                 </form>
             </div>
         </>

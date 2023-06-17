@@ -1,15 +1,5 @@
 @import url('../App.css');
 
-.heading {
-    text-align: center;
-    padding-bottom: 2rem;
-    text-shadow: var(--text-shadow);
-    text-transform: uppercase;
-    color: var(--black);
-    font-size: 3rem;
-    letter-spacing: .2rem;
-}
-
 .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

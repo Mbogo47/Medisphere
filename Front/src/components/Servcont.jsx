@@ -5,7 +5,7 @@ import Services from './Services.jsx';
 const Servcont = () => {
     return (
         <div className="section">
-            <h3 className="heading"> our <span>services</span></h3>
+            <h3 className="heading"> our services</h3>
             <div className="box-container">
                 <Services icon={<FaNotesMedical />} heading='free check ups' description='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, omnis.' span='Learn More' button={<FaChevronRight className="right" />} />
                 <Services icon={<FaAmbulance />} heading='24/7 ambulance' description='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, omnis.' span='Learn More' button={<FaChevronRight className="right" />} />

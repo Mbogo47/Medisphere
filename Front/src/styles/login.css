@@ -9,16 +9,17 @@ form {
     border-radius: 8px;
     margin: 5% 20%;
     font-weight: 700;
-    background-color: #004c6d;
+    background-color: var(--green);
 
 }
 
-input {
+input,
+textarea {
     margin: 20px;
     width: 80%;
     height: 50px;
     border-radius: 5px;
-    border: 1px solid #004c6d;
+    border: 1px solid var(--green);
     padding: 5px;
     font-weight: 500;
 }
@@ -35,8 +36,8 @@ h3 {
 button {
     margin: 5px;
     padding: 5px;
-    width: 50%;
-    background-color: var(--green);
+    width: 30%;
+    background-color: #004c6d;
     border: none;
     border-radius: 5px;
     color: white;
