@@ -33,7 +33,7 @@ h3 {
     color: #fff;
 }
 
-button {
+.btn-log {
     margin: 5px;
     padding: 5px;
     width: 30%;
@@ -41,6 +41,9 @@ button {
     border: none;
     border-radius: 5px;
     color: white;
+    text-align: center;
+    font-size: medium;
+    font-weight: 400;
 }
 
 .signin {
@@ -56,7 +59,7 @@ button {
 }
 
 .error-message {
-    color: red;
+    color: rgb(109, 8, 8);
     font-size: 12px;
     margin: 0;
     padding: 0;

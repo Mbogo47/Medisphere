@@ -26,13 +26,20 @@
 }
 
 .media-icon {
-    margin-top: 5px;
-    margin-right: 5px;
+    height: 5rem;
+    width: 5rem;
     color: var(--green);
-    font-size: 30px;
-    padding-bottom: .5rem;
-    vertical-align: middle;
-    flex-shrink: 0;
+    font-size: 2rem;
+    padding: 2px;
+    border: var(--border);
+    border-radius: .5rem;
+    margin: .3rem;
+}
+
+.media-icon:hover {
+    background: var(--green);
+    color: #fff;
+    box-shadow: var(--box-shadow);
 }
 
 .credit {
@@ -47,5 +54,5 @@
 
 .credit a {
     color: var(--green);
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
