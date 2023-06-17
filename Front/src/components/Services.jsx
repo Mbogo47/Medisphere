@@ -1,7 +1,7 @@
 import '../styles/services.css'
 const Services = ({ icon, heading, description, button, span }) => {
     return (
-        <div className="section">
+        <div className="section" >
             <div className='box'>
                 <div className='icon'>{icon}</div>
                 <h4>{heading}</h4>

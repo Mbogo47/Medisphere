@@ -1,28 +1,25 @@
-import { useRef } from "react";
-import Header from "../components/Header";
-import Revcont from "../components/Revcont";
-import Servcont from "../components/Servcont";
-import About from "./About";
-import Contact from "./Contact";
+import homeImage from "../assets/home-img.svg"
+import Footer from "../components/Footer"
+import Header from "../components/Header"
+import Revcont from "../components/Revcont"
+import Servcont from "../components/Servcont"
+import '../styles/landing.css'
+import About from "./About"
+import Contact from "./Contact"
+
 
 const Landingpage = () => {
-    const aboutRef = useRef(null);
-
-    const scrollToAbout = () => {
-        aboutRef.current.scrollIntoView({ behavior: "smooth" });
-    };
-
     return (
         <div>
-            <Header scrollToAbout={scrollToAbout} />
+            <Header />
+            <img src={homeImage} alt="home image" className="home" />
             <Servcont />
-            <div ref={aboutRef}>
-                <About />
-            </div>
+            <About />
             <Revcont />
             <Contact />
+            <Footer />
         </div>
-    );
-};
+    )
+}
 
-export default Landingpage;
+export default Landingpage

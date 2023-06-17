@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaBars, FaHeartbeat, FaHome, FaInfoCircle, FaTimes } from 'react-icons/fa';
+import { MdMedicalServices } from 'react-icons/md';
 import { RiContactsBookLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import '../styles/header.css';
@@ -41,6 +42,11 @@ const Header = () => {
                                     About
                                 </Link>
                             </li>
+                            <li>
+                                <Link to='/services' className='link'>
+                                    Services
+                                </Link>
+                            </li>
                         </ul>
                     </>
                     : <FaBars />}
@@ -54,13 +60,18 @@ const Header = () => {
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/contact' className="link" onClick={closeMenu}>
-                            <RiContactsBookLine className='icons' />
+                        <Link to='/services' className="link" onClick={closeMenu}>
+                            <MdMedicalServices className='icons' />
                         </Link>
                     </li>
                     <li className='nav-item'>
                         <Link to='/about' className="link" onClick={closeMenu}>
                             <FaInfoCircle className='icons' />
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/contact' className="link" onClick={closeMenu}>
+                            <RiContactsBookLine className='icons' />
                         </Link>
                     </li>
                 </ul>

@@ -7,7 +7,7 @@ import Reviews from './Reviews';
 
 const Revcont = () => {
     return (
-        <div className='section'>
+        <div className='section' id="reviews">
             <div className="review">
                 <h3 className='heading'>our reviews</h3>
                 <div className='box-container'>

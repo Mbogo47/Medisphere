@@ -52,7 +52,7 @@ button {
 .log {
     margin-top: 20px;
     margin-bottom: 20px;
-    color: var(--green);
+    color: #fff;
 }
 
 .error-message {
