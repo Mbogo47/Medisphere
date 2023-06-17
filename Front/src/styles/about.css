@@ -1,0 +1,72 @@
+@import url('../App.css');
+
+#about {
+    background-color: #f5f5f5;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: -70px;
+}
+
+.row .image {
+    flex: 1 1 45rem;
+    display: flex;
+    justify-content: center;
+}
+
+.row .image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.heading {
+    text-align: center;
+    padding-bottom: 2rem;
+    text-shadow: var(--text-shadow);
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: 3rem;
+    letter-spacing: .2rem;
+    margin-bottom: 30px;
+}
+
+.row .content {
+    flex: 1 1 45%;
+}
+
+.row .content h3 {
+    color: var(--black);
+    text-shadow: var(--text-shadow);
+    font-size: 2rem;
+    line-height: 1.8;
+}
+
+.row .content p {
+    color: var(--black);
+    padding: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border: var(--border);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    color: var(--green);
+    cursor: pointer;
+    background: #fff;
+    font-size: 20px;
+}
+
+.icon-right {
+    color: var(--green);
+    vertical-align: middle;
+}
