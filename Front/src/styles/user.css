@@ -1,0 +1,9 @@
+.user {
+    position: absolute;
+    right: 1px;
+    top: 16px;
+    background: white;
+    padding: 8px;
+    border-radius: rounded;
+    width: 96px;
+}

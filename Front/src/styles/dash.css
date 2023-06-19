@@ -1,0 +1,12 @@
+@import url('../App.css');
+
+.dashboard {
+    display: flex;
+    padding: 20px;
+}
+
+.dashboard-content {
+    flex: 1;
+    /* padding: 20px; */
+    padding-left: 10px;
+}
