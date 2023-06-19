@@ -1,5 +1,5 @@
 import { FaChevronRight } from "react-icons/fa";
-import aboutImage from "../assets/about-img.svg";
+import aboutImage from "../assets/about.svg";
 import '../styles/about.css';
 
 const About = () => {

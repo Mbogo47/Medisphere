@@ -6,7 +6,9 @@
 
 #contact form {
     margin: 0;
+    padding-left: 10rem;
     padding: 10px;
+    /* width: 700px; */
 }
 
 button {

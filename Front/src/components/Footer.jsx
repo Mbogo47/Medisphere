@@ -15,7 +15,7 @@ const Footer = () => {
                     <FaPinterest className='media-icon' />
                 </div>
 
-                <div class="credit"> created by <a href="https://github.com/Mbogo47/Medisphere.git">Ivy Mbogo</a> &copy; 2023 | all rights reserved</div>
+                <div className="credit"> created by <a href="https://github.com/Mbogo47/Medisphere.git">Ivy Mbogo</a> &copy; 2023 | all rights reserved</div>
 
             </div>
         </div>

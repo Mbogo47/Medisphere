@@ -1,7 +1,11 @@
-
+import Sidebar from '../components/Sidebar'
 const Dashboard = () => {
     return (
-        <div>Dashboard</div>
+        <div>
+            <Sidebar />
+            Dashboard
+            {/* https://www.youtube.com/watch?v=0cPCMIuDk2I */}
+        </div>
     )
 }
 

@@ -16,11 +16,18 @@ const Header = () => {
         setMenuOpen(false);
     };
 
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <header className='header'>
             <h2>
                 <FaHeartbeat className='heart' />
-                <span>MediSphere</span>
+                <span className='title'>MediSphere</span>
             </h2>
             <div id="menu-btn" style={{ fontSize: '20px' }} onClick={toggleMenu}>
                 {isMenuOpen ?
@@ -28,54 +35,53 @@ const Header = () => {
                         <FaTimes />
                         <ul className='nav-list'>
                             <li>
-                                <Link to='/' className="link">
+                                <span className="span-link" onClick={() => scrollToSection('home')}>
                                     Home
-                                </Link>
-                            </li>
-                            <li className='nav-item'>
-                                <Link to='/contact' className="link">
-                                    Contact
-                                </Link>
-                            </li>
-                            <li className='nav-item'>
-                                <Link to='/about' className="link" >
-                                    About
-                                </Link>
+                                </span>
                             </li>
                             <li>
-                                <Link to='/services' className='link'>
+                                <span className="span-link" onClick={() => scrollToSection('services')}>
                                     Services
-                                </Link>
+                                </span>
+                            </li>
+                            <li className='nav-item'>
+                                <span className="span-link" onClick={() => scrollToSection('about')}>
+                                    About
+                                </span>
+                            </li>
+                            <li className='nav-item'>
+                                <span className="span-link" onClick={() => scrollToSection('contact')}>
+                                    Contact
+                                </span>
+                            </li>
+                            <li className='nav-item'>
+                                <Link to='/login' className="span-link" > Login</Link>
+                            </li>
+                            <li className='nav-item'>
+                                <Link to='/signup' className="span-link" >Sign Up</Link>
                             </li>
                         </ul>
+
+
                     </>
                     : <FaBars />}
             </div>
 
             <nav className={isMenuOpen ? 'navbar active' : 'navbar'}>
                 <ul className='nav-list'>
-                    <li>
-                        <Link to='/' className="link" onClick={closeMenu}>
-                            <FaHome className='icons' />
-                        </Link>
+                    <li className='nav-item'>
+                        <FaHome className='icons' onClick={() => scrollToSection('home')} title="Home" />
                     </li>
                     <li className='nav-item'>
-                        <Link to='/services' className="link" onClick={closeMenu}>
-                            <MdMedicalServices className='icons' />
-                        </Link>
+                        <MdMedicalServices className='icons' onClick={() => scrollToSection('services')} title="Services" />
                     </li>
                     <li className='nav-item'>
-                        <Link to='/about' className="link" onClick={closeMenu}>
-                            <FaInfoCircle className='icons' />
-                        </Link>
+                        <FaInfoCircle className='icons' onClick={() => scrollToSection('about')} title="About" />
                     </li>
                     <li className='nav-item'>
-                        <Link to='/contact' className="link" onClick={closeMenu}>
-                            <RiContactsBookLine className='icons' />
-                        </Link>
+                        <RiContactsBookLine className='icons' onClick={() => scrollToSection('contact')} title="Contact" />
                     </li>
                 </ul>
-
             </nav>
 
             <div className='auth-buttons'>

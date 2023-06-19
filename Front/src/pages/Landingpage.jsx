@@ -1,4 +1,4 @@
-import homeImage from "../assets/home-img.svg"
+import homeImage from "../assets/home.svg"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Revcont from "../components/Revcont"
@@ -12,7 +12,7 @@ const Landingpage = () => {
     return (
         <div>
             <Header />
-            <img src={homeImage} alt="home image" className="home" />
+            <img src={homeImage} alt="home image" className="home" id="home" />
             <Servcont />
             <About />
             <Revcont />
