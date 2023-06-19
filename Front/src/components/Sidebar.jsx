@@ -1,5 +1,5 @@
 import { FaCalendar, FaFileMedicalAlt, FaHome } from "react-icons/fa";
-import '../styles/Sidebar.css';
+import '../styles/sidebar.css';
 
 const Sidebar = () => {
     return (
