@@ -1,6 +1,7 @@
 import '../styles/user.css';
+
 const UserProfile = () => {
-    const { currentcolor } = useContext()
+    // const { currentcolor } = useContext()
     return (
         <div className='user'>
             <div>UserProfile</div>

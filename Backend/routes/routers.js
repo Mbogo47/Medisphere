@@ -1,4 +1,4 @@
-import { getAppointments, getMedicalHistory, getPatients, getPrescription, getUnpaid } from "../controllers/patientController.js";
+import { getAppointments, getDepartments, getMedicalHistory, getPatients, getPrescription, getUnpaid } from "../controllers/patientController.js";
 
 
 const patientsRoutes = (app) => {
@@ -12,6 +12,8 @@ const patientsRoutes = (app) => {
         .get(getAppointments)
     app.route('/unpaid')
         .get(getUnpaid)
+    app.route('/departments')
+        .get(getDepartments)
 };
 
 export default patientsRoutes;

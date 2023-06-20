@@ -68,7 +68,7 @@ FROM
 
 // get all appointments of a doctor by doctorId
 export const getAppointments = async (req, res) => {
-    const { doctorId } = req.params;
+
     let connection;
 
     try {
@@ -82,7 +82,7 @@ export const getAppointments = async (req, res) => {
             FROM
                 Patients.Appointments a
             WHERE
-                a.doctorId = ${doctorId};
+                a.doctorId = @doctorId;
         `);
         res.send(result);
     } catch (error) {
@@ -115,3 +115,19 @@ WHERE b.paymentStatus = 'Unpaid';
         }
     }
 };
+
+// get all departments
+export const getDepartments = async (req, res) => {
+    let connection;
+    try {
+        connection = await sql.connect(config.sql);
+        const result = await connection.request().query('SELECT departmentName  FROM Department.Departments');
+        res.send(result);
+    } catch (error) {
+        res.status(500).json({ error });
+    } finally {
+        if (connection) {
+            connection.close();
+        }
+    }
+}

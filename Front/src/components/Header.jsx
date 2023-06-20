@@ -85,8 +85,8 @@ const Header = () => {
             </nav>
 
             <div className='auth-buttons'>
-                <Link to='/login' className="button-link">Login</Link>
-                <Link to='/signup' className="button-link">Sign Up</Link>
+                <Link to='/login' className="button-link">Login as patient</Link>
+                <Link to='/login' className="button-link">Login as doctor</Link>
             </div>
         </header>
     );

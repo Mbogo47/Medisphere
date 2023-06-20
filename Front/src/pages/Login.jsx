@@ -24,6 +24,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3>Login</h3>
                     <input type="text" name="username" placeholder="Username" {...register("username")} />
+                    <input type="text" name="patientName" placeholder="Patientname" {...register("username")} required></input>
                     {errors.username && <p className="error-message">{errors.username.message}</p>}
                     <input type="password" name="password" placeholder="Password" {...register("password")} />
                     {errors.password && <p className="error-message">{errors.password.message}</p>}
