@@ -20,6 +20,7 @@ const Signup = () => {
             setDepartments(allDepartments.recordset)
         }
         fetchDepartments()
+
     }, [])
 
     const schema = yup.object().shape({
@@ -59,38 +60,30 @@ const Signup = () => {
     return (
         <>
             <div>
+
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3>Sign Up</h3>
-                    <input type="text" name="username" placeholder="Username" {...register("username")} />
+                    <input type="text" name="username" placeholder="Patientname" {...register("username")} />
                     {errors.username && <p className="error-message">{errors.username.message}</p>}
 
                     <input type="email" name="email" placeholder="Email" {...register("email")} />
                     {errors.email && <p className="error-message">{errors.email.message}</p>}
 
-                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" {...register("phoneNumber")} />
-                    {errors.phoneNumber && <p className="error-message">{errors.phoneNumber.message}</p>}
+                    {/* <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" {...register("phoneNumber")} />
+                    {errors.phoneNumber && <p className="error-message">{errors.phoneNumber.message}</p>} */}
 
-                    <input type="text" id="address" name="address" placeholder="Address" {...register("address")} required />
-                    {errors.address && <p className="error-message">{errors.address.message}</p>}
+                    {/* <input type="text" id="address" name="address" placeholder="Address" {...register("address")} />
+                    {errors.address && <p className="error-message">{errors.address.message}</p>} */}
 
                     <select id="department" name="department" {...register("department")} >
-                        {/* <option value="" disabled selected hidden>Select Department</option> */}
+                        <option value="" disabled selected hidden>-- Select Department --</option>
                         {departments.map((department, i) => (
-                            <option key={i} value={department.name} className="u-dept-fix">
-                                {department.name}
+                            <option key={i} value={department.departmentName} className="u-dept-fix">
+                                {department.departmentName}
                             </option>
+
                         ))}
-
                     </select>
-
-                    {/* <select id="department" name="department" {...register("department")}>
-                        <option value="" disabled selected hidden>Select Department</option>
-
-                        <option value="department1">Department 1</option>
-                        <option value="department2">Department 2</option>
-                        <option value="department3">Department 3</option>
-                    </select> */}
-
 
                     {errors.department && <p className="error-message">{errors.department.message}</p>}
 

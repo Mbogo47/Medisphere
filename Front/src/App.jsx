@@ -3,6 +3,7 @@ import './App.css';
 import Dashboard from './pages/Dashboard';
 import Landingpage from './pages/Landingpage';
 import Login from './pages/Login';
+import Notfound from './pages/Notfound';
 import Signup from './pages/Signup';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/*" element={<Notfound />} />
         </Routes>
       </Router>
     </>
