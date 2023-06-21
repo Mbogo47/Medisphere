@@ -1,18 +1,35 @@
-// import Header from "../components/Header";
-import { ProSidebarProvider } from 'react-pro-sidebar';
-import SidebarComponent from "../components/Sidebar";
-import "../styles/dash.css";
+import React, { useState } from 'react';
+import SidebarComponent from '../components/Sidebar';
+import Appointments from './Appointments';
+
+import '../styles/dash.css';
+import Medical from './MedicalRecords';
 
 const Dashboard = () => {
+    const [showAppointments, setShowAppointments] = useState(false);
+    const [showRecords, setShowRecords] = useState(false);
+    const handleAppointmentsClick = () => {
+        setShowAppointments(true);
+    };
+    const handleRecordsClick = () => {
+        setShowRecords(true);
+    };
+
     return (
         <>
-            {/* <Header /> */}
             <div className="dashboard">
-                <ProSidebarProvider>
-                    <SidebarComponent />
-                </ProSidebarProvider>
+                <SidebarComponent onAppointmentsClick={handleAppointmentsClick} />
                 <div className="dashboard-content">
-                    <p>Dashboard</p>
+                    {showAppointments ? (
+                        <Appointments />
+                    ) : (
+                        <p>Welcome To Medisphere</p>
+                    )}
+                    {showRecords ? (
+                        <Medical />
+                    ) : (
+                        <p>Welcome To Medisphere</p>
+                    )}
                 </div>
             </div>
         </>

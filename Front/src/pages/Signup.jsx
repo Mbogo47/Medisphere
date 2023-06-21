@@ -69,12 +69,6 @@ const Signup = () => {
                     <input type="email" name="email" placeholder="Email" {...register("email")} />
                     {errors.email && <p className="error-message">{errors.email.message}</p>}
 
-                    {/* <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" {...register("phoneNumber")} />
-                    {errors.phoneNumber && <p className="error-message">{errors.phoneNumber.message}</p>} */}
-
-                    {/* <input type="text" id="address" name="address" placeholder="Address" {...register("address")} />
-                    {errors.address && <p className="error-message">{errors.address.message}</p>} */}
-
                     <select id="department" name="department" {...register("department")} >
                         <option value="" disabled selected hidden>-- Select Department --</option>
                         {departments.map((department, i) => (

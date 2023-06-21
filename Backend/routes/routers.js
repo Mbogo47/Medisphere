@@ -8,7 +8,7 @@ const patientsRoutes = (app) => {
         .get(getPrescription);
     app.route('/history')
         .get(getMedicalHistory);
-    app.route('/appointments/:doctorId')
+    app.route('/appointments')
         .get(getAppointments)
     app.route('/unpaid')
         .get(getUnpaid)

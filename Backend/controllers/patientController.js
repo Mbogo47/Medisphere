@@ -74,16 +74,17 @@ export const getAppointments = async (req, res) => {
     try {
         connection = await sql.connect(config.sql);
         const result = await connection.request().query(`
-            SELECT
-                a.appointmentId,
-                a.appointmentDate,
-                a.appointmentTime,
-                a.status
-            FROM
-                Patients.Appointments a
-            WHERE
-                a.doctorId = @doctorId;
-        `);
+               SELECT
+   CONCAT(P.firstName, ' ', P.lastName) AS patientName,
+  A.appointmentDate,
+  A.appointmentTime,
+  A.status,
+ D.doctorId,
+ CONCAT(D.firstName, ' ', D.lastName) AS doctorName
+FROM
+  Patients.Appointments A
+  JOIN Patients.Patients P ON A.patientId = P.patientId
+  JOIN Employees.Doctors D ON A.doctorId = D.doctorId;  `);
         res.send(result);
     } catch (error) {
         res.status(500).json({ error });

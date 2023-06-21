@@ -1,5 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import Appointments from './pages/Appointments';
 import Dashboard from './pages/Dashboard';
 import Landingpage from './pages/Landingpage';
 import Login from './pages/Login';
@@ -16,6 +17,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/appointments" element={<Appointments />} />
           <Route path="/*" element={<Notfound />} />
         </Routes>
       </Router>
