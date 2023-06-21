@@ -1,17 +1,21 @@
-import Sidebar from "../components/Sidebar";
-import UserProfile from "../components/UserProfile";
+// import Header from "../components/Header";
+import { ProSidebarProvider } from 'react-pro-sidebar';
+import SidebarComponent from "../components/Sidebar";
 import "../styles/dash.css";
 
 const Dashboard = () => {
     return (
-        <div className="dashboard">
-            <Sidebar />
-            <div className="dashboard-content">
-                <p>Dashboard</p>
-                {/* https://www.youtube.com/watch?v=0cPCMIuDk2I */}
-                <UserProfile />
+        <>
+            {/* <Header /> */}
+            <div className="dashboard">
+                <ProSidebarProvider>
+                    <SidebarComponent />
+                </ProSidebarProvider>
+                <div className="dashboard-content">
+                    <p>Dashboard</p>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
