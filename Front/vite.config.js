@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
    build: {
     rollupOptions: {
-      external: ['react-pro-sidebar'],
+    external: ['react-pro-sidebar/dist/es'],
     },
   },
 })
