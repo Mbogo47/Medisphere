@@ -18,7 +18,7 @@ const Dashboard = () => {
     return (
         <>
             <div className="dashboard">
-                <SidebarComponent onAppointmentsClick={handleAppointmentsClick} />
+                <SidebarComponent onAppointmentsClick={handleAppointmentsClick} onRecordsClick={handleRecordsClick} />
                 <div className="dashboard-content">
                     {showAppointments ? (
                         <Appointments />

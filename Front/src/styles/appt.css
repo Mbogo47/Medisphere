@@ -12,7 +12,7 @@ table tr td {
 }
 
 table tr th {
-    background-color: #1cadad;
+    background-color: var(--green);
     color: #fff;
 }
 

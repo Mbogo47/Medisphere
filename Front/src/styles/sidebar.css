@@ -3,9 +3,7 @@
     border-radius: 0.5rem;
     margin-left: 10px;
     transition: width 0.3s ease;
-    /* Add transition for smooth animation */
     width: 200px;
-    /* Initial width */
 }
 
 .sidebar div {

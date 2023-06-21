@@ -26,7 +26,6 @@ const Medical = () => {
                     <tr>
                         <th>Patient Id</th>
                         <th>Patient Name</th>
-                        <th>Date</th>
                         <th>Diagnosis</th>
                         <th>Doctor Id</th>
                         <th>Doctor Name</th>
@@ -36,10 +35,10 @@ const Medical = () => {
                     {records.map((record, recordId) => (
                         <tr key={recordId}>
                             <td>{record.patientId}</td>
-                            <td>{appointment.patientName}</td>
-                            <td>{appointment.diagnosis}</td>
-                            <td>{appointment.doctorId}</td>
-                            <td>{appointment.doctorName}</td>
+                            <td>{record.patientName}</td>
+                            <td>{record.diagnosis}</td>
+                            <td>{record.doctorId}</td>
+                            <td>{record.doctorName}</td>
                         </tr>
                     ))}
 
