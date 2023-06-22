@@ -1,36 +1,15 @@
-import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import SidebarComponent from '../components/Sidebar';
-import Appointments from './Appointments';
-
 import '../styles/dash.css';
-import Medical from './MedicalRecords';
 
 const Dashboard = () => {
-    const [showAppointments, setShowAppointments] = useState(false);
-    const [showRecords, setShowRecords] = useState(false);
-    const handleAppointmentsClick = () => {
-        setShowAppointments(true);
-    };
-    const handleRecordsClick = () => {
-        setShowRecords(true);
-    };
 
     return (
         <>
             <div className="dashboard">
-                <SidebarComponent onAppointmentsClick={handleAppointmentsClick} onRecordsClick={handleRecordsClick} />
-                <div className="dashboard-content">
-                    {showAppointments ? (
-                        <Appointments />
-                    ) : (
-                        <p>Welcome To Medisphere</p>
-                    )}
-                    {showRecords ? (
-                        <Medical />
-                    ) : (
-                        <p>Welcome To Medisphere</p>
-                    )}
-                </div>
+
+                <SidebarComponent />
+                <div className='dashboard-content'><Outlet /></div>
             </div>
         </>
     );

@@ -1,11 +1,11 @@
-import { FaUserMd } from 'react-icons/fa';
+import { FaUserCircle } from 'react-icons/fa';
 import '../styles/user.css';
 
 const UserProfile = () => {
     // const { currentcolor } = useContext()
     return (
         <div >
-            <FaUserMd style={{
+            <FaUserCircle style={{
                 paddingRight: '10px',
                 fontSize: '30px',
                 color: '#067a5e',
