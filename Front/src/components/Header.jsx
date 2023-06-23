@@ -79,14 +79,14 @@ const Header = () => {
                         <FaInfoCircle className='icons' onClick={() => scrollToSection('about')} title="About" />
                     </li>
                     <li className='nav-item'>
-                        <RiContactsBookLine className='icons' onClick={() => scrollToSection('contact')} title="Contact" />
+                        <RiContactsBookLine className='icons' onClick={() => scrollToSection('contact')} title="Contact"/>
                     </li>
                 </ul>
             </nav>
 
             <div className='auth-buttons'>
-                <Link to='/login' className="button-link">Login as patient</Link>
-                <Link to='/login' className="button-link">Login as doctor</Link>
+                <Link to='/patient' className="button-link">Login as patient</Link>
+                <Link to='/doctor' className="button-link">Login as doctor</Link>
             </div>
         </header>
     );

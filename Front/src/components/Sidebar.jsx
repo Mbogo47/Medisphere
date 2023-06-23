@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaBars, FaCalendar, FaFileMedicalAlt, FaHome, FaPills, FaUserMd } from 'react-icons/fa';
 import { GiMedicinePills, GiMedicines, GiTestTubes } from 'react-icons/gi';
 import { MdOutlineLogout, MdOutlinePayments, MdPayments } from 'react-icons/md';
@@ -11,9 +11,26 @@ import '../styles/sidebar.css';
 const SidebarComponent = () => {
     const [collapsed, setCollapsed] = useState(false);
 
+    const handleWindowResize = () => {
+        setCollapsed(window.innerWidth <= 768); // Change the breakpoint value as per your requirement
+    };
+
+    useEffect(() => {
+        // Check the window size on initial render
+        handleWindowResize();
+
+        // Add event listener for window resize
+        window.addEventListener('resize', handleWindowResize);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
     return (
         <div style={{ minHeight: '100vh' }}>
-            <Sidebar collapsed={collapsed} className="sidebar" breakPoint="sm" transitionDuration={800}>
+            <Sidebar collapsed={collapsed} className="sidebar" transitionDuration={800}>
                 <Menu>
                     <MenuItem
                         icon={<FaBars />}
@@ -25,7 +42,7 @@ const SidebarComponent = () => {
                         <h2>Medisphere</h2>
                     </MenuItem>
 
-                    <MenuItem icon={<FaHome className="icons-side" />} component={<Link to="home" />} >
+                    <MenuItem icon={<FaHome className="icons-side" />} component={<Link to="home" />}  >
                         <span className="span-side">Dashboard</span>
                     </MenuItem>
 
@@ -39,10 +56,10 @@ const SidebarComponent = () => {
                     </SubMenu>
 
                     <SubMenu label="Pharmacy" className="span-side" icon={<FaPills className="icons-side" />} >
-                        <MenuItem icon={<GiMedicinePills className="icons-side" />} >
+                        <MenuItem icon={<GiMedicinePills className="icons-side" />}  >
                             <span className="span-side">Medication</span>
                         </MenuItem>
-                        <MenuItem icon={<GiMedicines className="icons-side" />} >
+                        <MenuItem icon={<GiMedicines className="icons-side" />} component={<Link to="prescription" />}>
                             <span className="span-side">Prescriptions</span>
                         </MenuItem>
                     </SubMenu>
@@ -58,6 +75,7 @@ const SidebarComponent = () => {
                             <span className="span-side">Paid</span>
                         </MenuItem>
                     </SubMenu>
+
                     <SubMenu label="Laboratory" className="span-side" icon={<RiTestTubeLine className="icons-side" />} >
                         <MenuItem icon={<GiTestTubes className="icons-side" />}>
                             <span className="span-side">TestResults</span>
@@ -66,22 +84,23 @@ const SidebarComponent = () => {
                             <span className="span-side">Tests</span>
                         </MenuItem>
                     </SubMenu>
+
                     <SubMenu label="Surgeries" className="span-side" icon={<RiSurgicalMaskFill className="icons-side" />} >
                         <MenuItem icon={<RiSurgicalMaskLine className="icons-side" />}>
                             <span className="span-side">Surgeries</span>
                         </MenuItem>
                     </SubMenu>
+
                     <MenuItem>
                         <UserProfile />
                     </MenuItem>
+
                     <MenuItem>
                         <MdOutlineLogout className="icons-side" />
                         <span className="span-side">Log out</span>
                     </MenuItem>
                 </Menu>
             </Sidebar>
-
-
         </div>
     );
 };

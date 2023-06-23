@@ -1,19 +1,26 @@
+import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import config from "./model/config.js";
 import doctorRoutes from "./routes/doctorRouters.js";
 import labRoutes from "./routes/labRouters.js";
+import patientRoutes from "./routes/patientRouter.js";
 import pharmacyRoutes from "./routes/pharmacyRouters.js";
+import surgeryRoutes from "./routes/surgeryRouters.js";
 
 const app = express();
 
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+
+// Routes
 doctorRoutes(app);
 pharmacyRoutes(app);
 labRoutes(app);
+patientRoutes(app);
+surgeryRoutes(app);
 
 app.get("/", (req, res) => {
     res.send("Welcome to medisphere");

@@ -1,125 +1,93 @@
-import {
-    FaAngleDoubleLeft,
-    FaAngleDoubleRight,
-    FaGem,
-    FaHeart,
-    FaList,
-    FaRegLaughWink,
-    FaTachometerAlt,
-    FaUser
-} from 'react-icons/fa';
-import {
-    Menu,
-    MenuItem,
-    ProSidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SubMenu
-} from 'react-pro-sidebar';
-import { Link, NavLink } from 'react-router-dom';
-import sidebarBg from '../assets/bg1.jpg';
+import { useEffect, useState } from 'react';
+import '../styles/appt.css';
+import { FaPencilAlt } from 'react-icons/fa';
+import { RiDeleteBinFill } from 'react-icons/ri';
 
-const Sidebar = ({
-    image,
-    collapsed,
-    toggled,
-    handleToggleSidebar,
-    handleCollapsedChange
-}) => {
+const Appointments = () => {
+    const [appointments, setAppointments] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const fetchAppointments = async () => {
+            const response = await fetch('http://localhost:8081/appointments', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const allAppointments = await response.json();
+            setAppointments(allAppointments.recordset);
+        };
+        fetchAppointments();
+    }, []);
+
+    const handleEdit = async (appointmentId) => {
+        // Handle edit logic here
+    };
+
+    const handleDelete = async (appointmentId) => {
+        // Handle delete logic here
+    };
+
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+    };
+
+    const handlePrevious = () => {
+        setCurrentIndex((prevIndex) => prevIndex - 1);
+    };
+
+    if (appointments.length === 0) {
+        return <div>Loading...</div>;
+    }
+
+    const currentAppointment = appointments[currentIndex];
+
     return (
-        <ProSidebar
-            image={image ? sidebarBg : false}
-            collapsed={collapsed}
-            toggled={toggled}
-            onToggle={handleToggleSidebar}
-            breakPoint="md"
-        >
-            {/* Header */}
-            <SidebarHeader>
-                <Menu iconShape="circle">
-                    {collapsed ? (
-                        <MenuItem
-                            icon={<FaAngleDoubleRight />}
-                            onClick={handleCollapsedChange}
-                        ></MenuItem>
-                    ) : (
-                        <MenuItem
-                            suffix={<FaAngleDoubleLeft />}
-                            onClick={handleCollapsedChange}
-                        >
-                            <div
-                                style={{
-                                    padding: '9px',
-                                    textTransform: 'uppercase',
-                                    fontWeight: 'bold',
-                                    fontSize: 15,
-                                    letterSpacing: '1px'
-                                }}
-                            >
-                                Pro Sidebar
-                            </div>
-                        </MenuItem>
-                    )}
-                </Menu>
-            </SidebarHeader>
-            {/* Content */}
-            <SidebarContent>
-                <Menu iconShape="circle">
-                    <MenuItem
-                        icon={<FaTachometerAlt />}
-                        suffix={<span className="badge red">NEW</span>}
-                    >
-                        Dashboard
-                        <NavLink to="/" />
-                    </MenuItem>
-                    {/* <MenuItem icon={<FaGem />}>Components </MenuItem> */}
-                    <MenuItem icon={<FaGem />}>
-                        Components <Link to="/components" />
-                    </MenuItem>
-                    <SubMenu
-                        suffix={<span className="badge yellow">3</span>}
-                        title={'With Suffix'}
-                        icon={<FaRegLaughWink />}
-                    >
-                        <MenuItem>Submenu 1</MenuItem>
-                        <MenuItem>Submenu 2</MenuItem>
-                        <MenuItem>Submenu 3</MenuItem>
-                    </SubMenu>
-                    <SubMenu
-                        prefix={<span className="badge gray">3</span>}
-                        title={'With Prefix'}
-                        icon={<FaHeart />}
-                    >
-                        <MenuItem>Submenu 1</MenuItem>
-                        <MenuItem>Submenu 2</MenuItem>
-                        <MenuItem>Submenu 3</MenuItem>
-                    </SubMenu>
-                    <SubMenu title={'Multi Level'} icon={<FaList />}>
-                        <MenuItem>Submenu 1 </MenuItem>
-                        <MenuItem>Submenu 2 </MenuItem>
-                        <SubMenu title={'Submenu 3'}>
-                            <MenuItem>Submenu 3.1 </MenuItem>
-                            <MenuItem>Submenu 3.2 </MenuItem>
-                        </SubMenu>
-                    </SubMenu>
-                </Menu>
-            </SidebarContent>
-            {/* Footer */}
-            <SidebarFooter style={{ textAlign: 'center' }}>
-                <div className="sidebar-btn-wrapper" style={{ padding: '16px' }}>
-                    <Link
-                        className="sidebar-btn"
-                        style={{ cursor: 'pointer' }}
-                        to="/profile"
-                    >
-                        <FaUser />
-                        <span>My Account</span>
-                    </Link>
+        <div>
+            <h1>Appointments</h1>
+            <form>
+                <div>
+                    <label htmlFor="patientName">Patient Name</label>
+                    <input type="text" id="patientName" value={currentAppointment.patientName} disabled />
                 </div>
-            </SidebarFooter>
-        </ProSidebar>
+                <div>
+                    <label htmlFor="date">Date</label>
+                    <input type="text" id="date" value={currentAppointment.appointmentDate} disabled />
+                </div>
+                <div>
+                    <label htmlFor="time">Time</label>
+                    <input type="text" id="time" value={currentAppointment.appointmentTime} disabled />
+                </div>
+                <div>
+                    <label htmlFor="status">Status</label>
+                    <input type="text" id="status" value={currentAppointment.status} disabled />
+                </div>
+                <div>
+                    <label htmlFor="doctorId">Doctor Id</label>
+                    <input type="text" id="doctorId" value={currentAppointment.doctorId} disabled />
+                </div>
+                <div>
+                    <label htmlFor="doctorName">Doctor Name</label>
+                    <input type="text" id="doctorName" value={currentAppointment.doctorName} disabled />
+                </div>
+                <div>
+                    <button onClick={handlePrevious} disabled={currentIndex === 0}>
+                        Previous
+                    </button>
+                    <button onClick={handleNext} disabled={currentIndex === appointments.length - 1}>
+                        Next
+                    </button>
+                    <button onClick={() => handleEdit(currentAppointment.appointmentId)} className="back">
+                        <FaPencilAlt />
+                    </button>
+                    <button onClick={() => handleDelete(currentAppointment.appointmentId)} className="back">
+                        <RiDeleteBinFill />
+                    </button>
+                </div>
+            </form>
+        </div>
     );
 };
 
-export default Sidebar;
+export default Appointments;

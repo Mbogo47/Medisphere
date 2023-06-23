@@ -9,7 +9,8 @@ const Dashboard = () => {
             <div className="dashboard">
 
                 <SidebarComponent />
-                <div className='dashboard-content'><Outlet /></div>
+                <div className='dashboard-content'>
+                    <Outlet /></div>
             </div>
         </>
     );

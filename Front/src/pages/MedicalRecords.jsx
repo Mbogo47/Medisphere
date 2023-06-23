@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../styles/appt.css';
+import { FaPencilAlt } from 'react-icons/fa';
+import { RiDeleteBinFill } from 'react-icons/ri';
 
 const Medical = () => {
     const [records, setRecords] = useState([]);
@@ -29,6 +31,7 @@ const Medical = () => {
                         <th>Diagnosis</th>
                         <th>Doctor Id</th>
                         <th>Doctor Name</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +42,16 @@ const Medical = () => {
                             <td>{record.diagnosis}</td>
                             <td>{record.doctorId}</td>
                             <td>{record.doctorName}</td>
+                            <td>
+                                <button onClick={() => handleEdit(appointment.appointmentId)} className='back'>
+                                    <FaPencilAlt />
+                                </button>
+                                <button onClick={() => handleDelete(appointment.appointmentId)} className='back' >
+                                    <RiDeleteBinFill />
+                                </button>
+                            </td>
                         </tr>
+                        
                     ))}
 
                 </tbody>

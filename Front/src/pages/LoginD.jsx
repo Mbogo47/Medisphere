@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as yup from "yup";
 import '../styles/login.css';
 
-const LoginPatient = () => {
+const DoctorLogin = () => {
     const schema = yup.object().shape({
         username: yup.string().required("Username is required"),
         password: yup.string().required("Password is required"),
@@ -24,17 +24,14 @@ const LoginPatient = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3>Login</h3>
                     <input type="text" name="username" placeholder="Username" {...register("username")} />
-                    <input type="text" name="patientName" placeholder="Patientname" {...register("username")} required></input>
                     {errors.username && <p className="error-message">{errors.username.message}</p>}
                     <input type="password" name="password" placeholder="Password" {...register("password")} />
                     {errors.password && <p className="error-message">{errors.password.message}</p>}
-                    <Link to={'/dashboard'} className="btn-log">Login</Link>
-
-                    <p className="signin">Don't have an account? <Link to={'/signup'} className="log">Sign Up</Link></p>
+                    <Link to={'/dashboard/home'} className="btn-log">Login</Link>
                 </form>
             </div>
         </>
     );
 }
 
-export default LoginPatient;
+export default DoctorLogin;

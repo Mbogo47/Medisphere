@@ -32,3 +32,23 @@ export const getDepartments = async (req, res) => {
         }
     }
 }
+
+
+// Get count of patients
+export const getPatientsCount = async (req, res) => {
+
+    let connection;
+
+    try {
+        connection = await sql.connect(config.sql);
+        const result = await connection.request().query(`
+                SELECT COUNT(*) AS patientsCount FROM Patients.Patients;  `);
+        res.send(result);
+    } catch (error) {
+        res.status(500).json({ error });
+    } finally {
+        if (connection) {
+            connection.close();
+        }
+    }
+}

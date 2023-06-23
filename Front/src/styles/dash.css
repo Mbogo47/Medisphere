@@ -17,15 +17,20 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     padding: 20px;
     flex-direction: column;
+    margin: 20px;
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .card-body {
     flex: 1;
     border: 1px solid #ccc;
     border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 20px;
-    margin-left: 20px;
+    padding: 10px;
 }
 
 .card-title {

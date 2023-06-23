@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { FaPencilAlt } from 'react-icons/fa';
+import { RiDeleteBinFill } from 'react-icons/ri';
 import '../styles/appt.css';
 
 const Appointments = () => {
@@ -11,15 +13,46 @@ const Appointments = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            })
-            const allAppointments = await response.json()
-            setAppointments(allAppointments.recordset)
-        }
-        fetchAppointments()
-    }, [])
+            });
+            const allAppointments = await response.json();
+            setAppointments(allAppointments.recordset);
+        };
+        fetchAppointments();
+    }, []);
+
+    // EDIT AND DELETE BUTTONS
+    useEffect(() => {
+        const handleEdit = async (appointmentId) => {
+            const response = await fetch('http://localhost:8081/appointments', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+
+            });
+            const allAppointments = await response.json();
+            setAppointments(allAppointments.recordset);
+        };
+        handleEdit();
+    }, []);
+
+    useEffect(() => {
+        const handleDelete = async (appointmentId) => {
+            const response = await fetch('http://localhost:8081/appointments', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const allAppointments = await response.json();
+            setAppointments(allAppointments.recordset);
+        };
+        handleDelete();
+    }, []);
+
 
     return (
-        <div >
+        <div>
             <h1>Appointments</h1>
             <table>
                 <thead>
@@ -30,6 +63,7 @@ const Appointments = () => {
                         <th>Status</th>
                         <th>Doctor Id</th>
                         <th>Doctor Name</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,14 +75,20 @@ const Appointments = () => {
                             <td>{appointment.status}</td>
                             <td>{appointment.doctorId}</td>
                             <td>{appointment.doctorName}</td>
+                            <td>
+                                <button onClick={() => handleEdit(appointment.appointmentId)} className='back'>
+                                    <FaPencilAlt />
+                                </button>
+                                <button onClick={() => handleDelete(appointment.appointmentId)} className='back'>
+                                    <RiDeleteBinFill />
+                                </button>
+                            </td>
                         </tr>
                     ))}
-
                 </tbody>
             </table>
-
         </div>
-    )
-}
+    );
+};
 
-export default Appointments
+export default Appointments;

@@ -1,7 +1,8 @@
 import sql from 'mssql';
 import config from '../../model/config.js';
 
-// get all appointments of a doctor by doctorId
+// get all appointments 
+
 export const getAppointments = async (req, res) => {
 
     let connection;
@@ -29,3 +30,23 @@ FROM
         }
     }
 };
+
+// get count of appointments 
+export const getAppointmentsCount = async (req, res) => {
+
+    let connection;
+
+    try {
+        connection = await sql.connect(config.sql);
+        const result = await connection.request().query(`
+            SELECT COUNT(*) AS appointmentsCount FROM Patients.Appointments;  `);
+        res.send(result);
+    } catch (error) {
+        res.status(500).json({ error });
+    } finally {
+        if (connection) {
+            connection.close();
+        }
+    }
+}
+
