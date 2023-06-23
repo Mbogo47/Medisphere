@@ -1,11 +1,15 @@
 import { createMedication, deleteMedication, getMedications, updateMedications } from "../controllers/Pharmacy/medicationControllers.js";
-import { getPrescription } from "../controllers/Pharmacy/prescriptionControllers.js";
+import { createPrescriptions, deletePrescriptions, getPrescriptions, updatePrescriptions } from "../controllers/Pharmacy/presControllers.js";
 
 const pharmacyRoutes = (app) => {
     // PHARMACY
     // Prescription
     app.route('/pres')
-        .get(getPrescription)
+        .get(getPrescriptions)
+        .post(createPrescriptions)
+    app.route('/pres/:id')
+        .put(updatePrescriptions)
+        .delete(deletePrescriptions);
 
     // Medication
     app.route('/medications')

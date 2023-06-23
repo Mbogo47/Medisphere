@@ -25,7 +25,7 @@ const SidebarComponent = () => {
                         <h2>Medisphere</h2>
                     </MenuItem>
 
-                    <MenuItem icon={<FaHome className="icons-side" />} >
+                    <MenuItem icon={<FaHome className="icons-side" />} component={<Link to="home" />} >
                         <span className="span-side">Dashboard</span>
                     </MenuItem>
 

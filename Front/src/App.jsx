@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import Appointments from './pages/Appointments';
+import DashContent from './pages/DashContent';
 import Dashboard from './pages/Dashboard';
 import Landingpage from './pages/Landingpage';
 import Login from './pages/Login';
@@ -21,6 +22,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} >
             <Route path="appointments" element={<Appointments />} />
             <Route path="records" element={<Medical />} />
+            <Route path="home" element={<DashContent />} />
           </Route>
         </Routes>
 
