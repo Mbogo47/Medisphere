@@ -10,13 +10,8 @@ USE HospitalManagementSystem;
 -- Patients Table
 CREATE TABLE Patients.Patients (
   patientId INT IDENTITY(1, 1) PRIMARY KEY,
-  firstName VARCHAR(50),
-  lastName VARCHAR(50),
-  dateOfBirth DATE,
-  gender VARCHAR(10),
-  contactNumber VARCHAR(20),
+  fullName VARCHAR(100),
   email VARCHAR(100),
-  address VARCHAR(200)
 );
 
 -- Patients Table

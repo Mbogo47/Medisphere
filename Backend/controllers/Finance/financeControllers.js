@@ -8,7 +8,7 @@ export const getUnpaid = async (req, res) => {
     try {
         connection = await sql.connect(config.sql);
         const result = await connection.request().query(`
-            SELECT CONCAT(P.firstName, ' ', P.lastName) AS patientName,
+            SELECT fullName AS patientName,
             b.billDate, b.amountDue
             FROM Patients.Patients p
             INNER JOIN Patients.Billing b ON p.patientId = b.patientId

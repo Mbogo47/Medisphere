@@ -7,26 +7,24 @@ export const getPrescriptions = async (req, res) => {
     let connection;
     try {
         connection = await sql.connect(config.sql);
-        const result = await connection.request().query(`SELECT
-  CONCAT(p.firstName, ' ', p.lastName) AS patientName,
-  a.appointmentDate,
-  d.doctorId,
-  CONCAT(d.firstName, ' ', d.lastName) AS doctorName,
-  m.medicationName,
-  pr.dosage,
-  m.usageInstructions
-FROM
-  Patients.Prescriptions AS pr
-JOIN
-  Patients.Appointments AS a ON pr.appointmentId = a.appointmentId
-JOIN
-  Patients.Patients AS p ON pr.patientId = p.patientId
-JOIN
-  Department.Medications AS m ON pr.medicationId = m.medicationId
-JOIN
-  Employees.Doctors AS d ON a.doctorId = d.doctorId;
-
-`);
+        const result = await connection
+            .request()
+            .query(`
+        SELECT
+          fullName AS patientName,
+          FORMAT(a.appointmentDate, 'yyyy-MM-dd') AS appointmentDate,
+          d.doctorId,
+          CONCAT(d.firstName, ' ', d.lastName) AS doctorName,
+          m.medicationName,
+          pr.dosage,
+          m.usageInstructions
+        FROM
+          Patients.Prescriptions AS pr
+          JOIN Patients.Appointments AS a ON pr.appointmentId = a.appointmentId
+          JOIN Patients.Patients AS p ON pr.patientId = p.patientId
+          JOIN Department.Medications AS m ON pr.medicationId = m.medicationId
+          JOIN Employees.Doctors AS d ON a.doctorId = d.doctorId;
+      `);
         res.send(result);
     } catch (error) {
         res.status(500).json({ error });

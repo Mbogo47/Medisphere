@@ -24,13 +24,8 @@ const Signup = () => {
     }, [])
 
     const schema = yup.object().shape({
-        username: yup.string().required("Username is required"),
+        fullName: yup.string().required("Username is required"),
         email: yup.string().required("Email is required").email("Invalid email format"),
-        phoneNumber: yup
-            .string()
-            .required("Phone number is required")
-            .matches(/^\d{10}$/, "Invalid phone number format"),
-        address: yup.string().required("Address is required"),
         department: yup.string().required("Department is required"),
         appointmentDate: yup.date().required("Appointment date is required"),
         appointmentTime: yup.string().required("Appointment time is required"),
@@ -63,7 +58,7 @@ const Signup = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3>Sign Up</h3>
-                    <input type="text" name="username" placeholder="Patientname" {...register("username")} />
+                    <input type="text" name="fullName" placeholder="Patientname" {...register("fullname")} />
                     {errors.username && <p className="error-message">{errors.username.message}</p>}
 
                     <input type="email" name="email" placeholder="Email" {...register("email")} />

@@ -9,7 +9,7 @@ export const getTestResults = async (req, res) => {
         connection = await sql.connect(config.sql);
         const result = await connection.request().query(`SELECT tr.resultId, 
         t.testName, 
-        CONCAT(P.firstName, ' ', P.lastName) as patientName, 
+        fullName as patientName, 
         d.doctorId, 
         tr.resultDate, 
         tr.resultDetails

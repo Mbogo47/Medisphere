@@ -2,6 +2,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import config from "./model/config.js";
+import authRouters from "./routes/authRouters.js";
 import doctorRoutes from "./routes/doctorRouters.js";
 import labRoutes from "./routes/labRouters.js";
 import patientRoutes from "./routes/patientRouter.js";
@@ -21,6 +22,7 @@ pharmacyRoutes(app);
 labRoutes(app);
 patientRoutes(app);
 surgeryRoutes(app);
+authRouters(app);
 
 app.get("/", (req, res) => {
     res.send("Welcome to medisphere");

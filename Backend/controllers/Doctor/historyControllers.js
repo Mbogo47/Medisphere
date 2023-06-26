@@ -9,7 +9,7 @@ export const getMedicalHistory = async (req, res) => {
         const result = await connection.request().query(`SELECT
 	mr.recordId,
 	p.patientId,
-    CONCAT(p.firstName, ' ', p.lastName) AS patientName,
+    fullName AS patientName,
     mr.diagnosis,
     d.doctorId,
     CONCAT(d.firstName, ' ', d.lastName) AS doctorName
