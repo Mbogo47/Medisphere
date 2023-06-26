@@ -12,6 +12,7 @@ CREATE TABLE Patients.Patients (
   patientId INT IDENTITY(1, 1) PRIMARY KEY,
   fullName VARCHAR(100),
   email VARCHAR(100),
+  password VARCHAR(50)
 );
 
 -- Patients Table

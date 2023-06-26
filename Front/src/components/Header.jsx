@@ -12,9 +12,7 @@ const Header = () => {
         setMenuOpen(!isMenuOpen);
     };
 
-    const closeMenu = () => {
-        setMenuOpen(false);
-    };
+    
 
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
@@ -55,7 +53,7 @@ const Header = () => {
                                 </span>
                             </li>
                             <li className='nav-item'>
-                                <Link to='/login' className="span-link" > Login</Link>
+                                <Link to='/doctor' className="span-link" > Login</Link>
                             </li>
                             <li className='nav-item'>
                                 <Link to='/signup' className="span-link" >Sign Up</Link>
@@ -79,7 +77,7 @@ const Header = () => {
                         <FaInfoCircle className='icons' onClick={() => scrollToSection('about')} title="About" />
                     </li>
                     <li className='nav-item'>
-                        <RiContactsBookLine className='icons' onClick={() => scrollToSection('contact')} title="Contact"/>
+                        <RiContactsBookLine className='icons' onClick={() => scrollToSection('contact')} title="Contact" />
                     </li>
                 </ul>
             </nav>

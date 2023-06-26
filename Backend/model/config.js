@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { PORT, HOST_URL, HOST, SQL_USER, SQL_PWD, SQL_DB, SQL_SERVER } = process.env;
+const { PORT, HOST_URL, HOST, SQL_USER, SQL_PWD, SQL_DB, SQL_SERVER, JWT_SECRET } = process.env;
 
 const sqlEncrypt = process.env.SQL_ENCRYPT === 'true';
 
@@ -23,7 +23,8 @@ const config = {
             encrypt: sqlEncrypt,
             enableArithAbort: true
         }
-    }
+    },
+    jwt_secret: JWT_SECRET
 }
 
 export default config;

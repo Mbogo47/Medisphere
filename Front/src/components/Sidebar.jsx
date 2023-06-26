@@ -19,7 +19,7 @@ const SidebarComponent = () => {
         // Check the window size on initial render
         handleWindowResize();
 
-        // Add event listener for window resize
+        // event listener for window resize
         window.addEventListener('resize', handleWindowResize);
 
         // Cleanup the event listener on component unmount
@@ -30,7 +30,7 @@ const SidebarComponent = () => {
 
     return (
         <div style={{ minHeight: '100vh' }}>
-            <Sidebar collapsed={collapsed} className="sidebar" transitionDuration={800}>
+            <Sidebar collapsed={collapsed} className="sidebar" transitionDuration={1000}>
                 <Menu>
                     <MenuItem
                         icon={<FaBars />}

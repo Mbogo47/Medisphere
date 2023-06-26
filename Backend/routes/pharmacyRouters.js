@@ -5,16 +5,16 @@ const pharmacyRoutes = (app) => {
     // PHARMACY
     // Prescription
     app.route('/pres')
+    .post(createPrescriptions)
         .get(getPrescriptions)
-        .post(createPrescriptions)
     app.route('/pres/:id')
         .put(updatePrescriptions)
         .delete(deletePrescriptions);
 
     // Medication
     app.route('/medications')
-        .get(getMedications)
-        .post(createMedication)
+    .post(createMedication)
+    .get(getMedications)
     app.route('/medications/:id')
         .put(updateMedications)
         .delete(deleteMedication);

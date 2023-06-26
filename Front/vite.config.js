@@ -9,5 +9,8 @@ export default defineConfig({
     external: ['react-pro-sidebar/dist/es'],
     },
   },
+  server: {
+    host: true
+  }
 })
 

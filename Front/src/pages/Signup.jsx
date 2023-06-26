@@ -4,9 +4,36 @@ import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import * as yup from "yup";
 import '../styles/login.css';
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [departments, setDepartments] = useState([]);
+    const navigate = useNavigate();
+    const onSubmit = (data) => {
+        fetch('http://localhost:8081/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => {
+                response.data.message && alert(response.data.message);
+                console.log(response);
+            })
+            // .then((data) => {
+            //     if (data.token) {
+            //         alert('User created successfully!');
+            //         navigate('/doctor');
+            //     } else {
+            //         alert('Failed to create user.');
+            //     }
+            // })
+            .catch((error) => {
+                alert(error.message);
+            });
+    };
+
 
     useEffect(() => {
         const fetchDepartments = async () => {
@@ -48,10 +75,6 @@ const Signup = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data) => {
-        console.log(data);
-    };
-
     return (
         <>
             <div>
@@ -59,12 +82,12 @@ const Signup = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h3>Sign Up</h3>
                     <input type="text" name="fullName" placeholder="Patientname" {...register("fullname")} />
-                    {errors.username && <p className="error-message">{errors.username.message}</p>}
+                    {errors.username && <p className="error-message">{errors.fullname.message}</p>}
 
                     <input type="email" name="email" placeholder="Email" {...register("email")} />
                     {errors.email && <p className="error-message">{errors.email.message}</p>}
 
-                    <select id="department" name="department" {...register("department")} >
+                    {/* <select id="department" name="department" {...register("department")} >
                         <option value="" disabled selected hidden>-- Select Department --</option>
                         {departments.map((department, i) => (
                             <option key={i} value={department.departmentName} className="u-dept-fix">
@@ -80,7 +103,7 @@ const Signup = () => {
                     {errors.appointmentDate && <p className="error-message">{errors.appointmentDate.message}</p>}
 
                     <input type="time" name="appointmentTime" placeholder="Appointment Time" {...register("appointmentTime")} />
-                    {errors.appointmentTime && <p className="error-message">{errors.appointmentTime.message}</p>}
+                    {errors.appointmentTime && <p className="error-message">{errors.appointmentTime.message}</p>} */}
 
                     <input type="password" name="password" placeholder="Password" {...register("password")} />
                     {errors.password && <p className="error-message">{errors.password.message}</p>}
