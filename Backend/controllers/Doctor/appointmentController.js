@@ -11,9 +11,11 @@ export const getAppointments = async (req, res) => {
         connection = await sql.connect(config.sql);
         const result = await connection.request().query(`
                SELECT
+               A.appointmentId,
    fullName AS patientName,
   FORMAT(A.appointmentDate, 'yyyy-MM-dd') AS appointmentDate,
   A.appointmentTime,
+  
   A.status,
  D.doctorId,
  CONCAT(D.firstName, ' ', D.lastName) AS doctorName

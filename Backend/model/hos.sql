@@ -393,7 +393,7 @@ VALUES
 
 -- Create Prescriptions Table
 CREATE TABLE Patients.Prescriptions (
-  appointmentId INT,
+  appointmentId INT ,
   patientId INT,
   medicationId INT,
   medicine VARCHAR(100),

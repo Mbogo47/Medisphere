@@ -10,20 +10,22 @@ export const getPrescriptions = async (req, res) => {
         const result = await connection
             .request()
             .query(`
-        SELECT
-          fullName AS patientName,
-          FORMAT(a.appointmentDate, 'yyyy-MM-dd') AS appointmentDate,
-          d.doctorId,
-          CONCAT(d.firstName, ' ', d.lastName) AS doctorName,
-          m.medicationName,
-          pr.dosage,
-          m.usageInstructions
-        FROM
-          Patients.Prescriptions AS pr
-          JOIN Patients.Appointments AS a ON pr.appointmentId = a.appointmentId
-          JOIN Patients.Patients AS p ON pr.patientId = p.patientId
-          JOIN Department.Medications AS m ON pr.medicationId = m.medicationId
-          JOIN Employees.Doctors AS d ON a.doctorId = d.doctorId;
+       SELECT
+  fullName AS patientName,
+  FORMAT(a.appointmentDate, 'yyyy-MM-dd') AS appointmentDate,
+  d.doctorId,
+  CONCAT(d.firstName, ' ', d.lastName) AS doctorName,
+  m.medicationName,
+  pr.dosage,
+  m.usageInstructions,
+  pr.prescriptionId
+FROM
+  Patients.Prescriptions AS pr
+  JOIN Patients.Appointments AS a ON pr.appointmentId = a.appointmentId
+  JOIN Patients.Patients AS p ON pr.patientId = p.patientId
+  JOIN Department.Medications AS m ON pr.medicationId = m.medicationId
+  JOIN Employees.Doctors AS d ON a.doctorId = d.doctorId;
+
       `);
         res.send(result);
     } catch (error) {
@@ -63,6 +65,10 @@ export const deletePrescriptions = async (req, res) => {
         res.send(result);
     } catch (error) {
         res.status(500).json({ error });
+    } finally {
+        if (connection) {
+            connection.close();
+        }
     }
 };
 
@@ -90,3 +96,22 @@ WHERE prescriptionId = @id;`);
     }
 };
 
+// Get a specific prescription
+export const getPrescription = async (req, res) => {
+    let connection;
+    try{
+        const { id } = req.params;
+        connection = await sql.connect(config.sql);
+        const result = await connection.request()
+            .input('id', sql.Int, id)
+            .query(`SELECT * FROM Patients.Prescriptions WHERE prescriptionId = @id;`);
+        res.send(result);
+    } catch (error) {
+        res.status(500).json({ error });
+
+    } finally {
+        if (connection) {
+            connection.close();
+        }
+    }
+};

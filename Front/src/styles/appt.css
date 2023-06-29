@@ -21,10 +21,3 @@ table tr:nth-child(even) {
     background-color: #f5f5f5;
 }
 
-.form{
-    background-color: #ddd;
-}
-
-.form input{
-    margin: 10px;
-}

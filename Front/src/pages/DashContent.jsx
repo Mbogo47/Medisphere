@@ -7,7 +7,7 @@ const Dashcontent = () => {
 
     // Fetch appointments count
     const [count, setCount] = useState([]);
-
+console.log(count)
     useEffect(() => {
         const fetchAppointmentsCount = async () => {
             const response = await fetch('http://localhost:8081/appointments/count', {
@@ -20,6 +20,7 @@ const Dashcontent = () => {
             setCount(allAppointmentsCount.recordset)
         }
         fetchAppointmentsCount()
+        
     }, [])
 
     // Fetch patients count
@@ -80,9 +81,9 @@ const Dashcontent = () => {
                     {getCurrentDateTime().replace('at', '')}
                 </div>
                 <div className="card">
-                    
+
                     <div className="card-body">
-                        <FaCalendarAlt className="icon-dash" component={<Link to="appointments" />} />
+                        <FaCalendarAlt className="icon-dash"  />
                         {count.map((count, i) => (
                             <h1 key={i}>{count.appointmentsCount} Appointments</h1>
                         ))}

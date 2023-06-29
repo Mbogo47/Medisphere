@@ -1,7 +1,9 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
+import PrescriptionForm from './Editing/EditPres';
 import Appointments from './pages/Appointmentable';
+import Appt from './pages/Apptpage';
 import DashContent from './pages/DashContent';
 import Dashboard from './pages/Dashboard';
 import Landingpage from './pages/Landingpage';
@@ -11,13 +13,12 @@ import Medical from './pages/MedicalRecords';
 import Notfound from './pages/Notfound';
 import Signup from './pages/Signup';
 import Prescription from './pages/prescription';
-import Appt from './pages/Apptpage'
+
 function App() {
   return (
     <>
       <Router>
         <Routes>
-
           <Route path="/" element={<Landingpage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/patient" element={<LoginPatient />} />
@@ -29,6 +30,7 @@ function App() {
             <Route path="records" element={<Medical />} />
             <Route path="home" element={<DashContent />} />
             <Route path="prescription" element={<Prescription />} />
+            <Route path="PresForm/:id" element={< PrescriptionForm />} />
           </Route>
         </Routes>
         <ToastContainer />
