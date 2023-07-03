@@ -29,3 +29,17 @@ FROM
     }
 };
 
+export const getDoctors = async (req, res) => {
+    let connection;
+    try {
+        connection = await sql.connect(config.sql);
+        const result = await connection.request().query(`SELECT * FROM Employees.Doctors`);
+        res.send(result);
+    } catch (error) {
+        res.status(500).json({ error });
+    } finally {
+        if (connection) {
+            connection.close();
+        }
+    }
+}

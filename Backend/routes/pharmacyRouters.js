@@ -1,6 +1,6 @@
 import { createMedication, deleteMedication, getMedications, updateMedications } from "../controllers/Pharmacy/medicationControllers.js";
 import { createPrescriptions, deletePrescriptions, getPrescription, getPrescriptions, updatePrescriptions } from "../controllers/Pharmacy/presControllers.js";
-
+import { loginRequired } from "../controllers/Auth/authControllers.js";
 const pharmacyRoutes = (app) => {
     // PHARMACY
     // Prescription

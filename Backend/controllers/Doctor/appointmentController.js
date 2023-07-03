@@ -52,3 +52,28 @@ export const getAppointmentsCount = async (req, res) => {
     }
 }
 
+// create a new appointment
+export const createAppointment = async (req, res) => {
+        let connection;
+    
+        try {
+            connection = await sql.connect(config.sql);
+            const result = await connection.request()
+                .input('patientId', sql.Int, req.body.patientId)
+                .input('doctorId', sql.Int, req.body.doctorId)
+                .input('appointmentDate', sql.Date, req.body.appointmentDate)
+                .input('appointmentTime', sql.VarChar, req.body.appointmentTime)
+                .input('status', sql.VarChar, req.body.status)
+                .query(`
+                INSERT INTO Patients.Appointments (patientId, doctorId, appointmentDate, appointmentTime, status)
+                VALUES (@patientId, @doctorId, @appointmentDate, @appointmentTime, @status);  `);
+            res.send(result);
+        } catch (error) {
+            res.status(500).json({ error });
+        } finally {
+            if (connection) {
+                connection.close();
+            }
+        }
+    
+    }

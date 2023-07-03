@@ -22,7 +22,7 @@ export const getDepartments = async (req, res) => {
     let connection;
     try {
         connection = await sql.connect(config.sql);
-        const result = await connection.request().query('SELECT departmentName  FROM Department.Departments');
+        const result = await connection.request().query('SELECT *  FROM Department.Departments');
         res.send(result);
     } catch (error) {
         res.status(500).json({ error });
@@ -53,24 +53,4 @@ export const getPatientsCount = async (req, res) => {
     }
 }
 
-// create patient
-export const createPatient = async (req, res) => {
-    let connection;
-    try{
-        connection = await sql.connect(config.sql);
-        const result = await connection.request()
-            .input('fullName', sql.NVarChar(50), req.body.fullName)
-            .input('email', sql.NVarChar(50), req.body.email)
-            .input('password', sql.NVarChar(50), req.body.password)
-            .input('dateOfBirth', sql.Date, req.body.dateOfBirth)
-result.query(`INSERT INTO Patients.Patients (fullName, email, password, dateOfBirth)`
-+ `VALUES (@fullName, @email,@password, @dateOfBirth);`);
-        res.send(result);
-    } catch (error) {
-        res.status(500).json({ error });
-    } finally {
-        if (connection) {
-            connection.close();
-        }
-    } 
-}
+
